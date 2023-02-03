@@ -6,6 +6,7 @@ import {
   HiChevronLeft,
 } from "react-icons/hi";
 import dayjs from "@/utils/dayjs";
+
 export default function Calendar() {
   const [current_date, set_current_date] = React.useState(
     dayjs("2010-01-28").toDate()
@@ -28,50 +29,35 @@ export default function Calendar() {
   const rest_of_days_in_page =
     42 - days_of_month - (start_day_of_current_month % 7);
 
-  // const _current_date = current_date.getDate();
-  // const current_month = current_date.getMonth();
-  // const current_year = current_date.getFullYear();
-  // const current_day = dayjs(current_date).day();
-
-  // console.log(_current_date, current_month, current_year, current_day);
-
-  // const last_day_of_last_month = dayjs(current_date)
-  //   .subtract(1, "month")
-  //   .endOf("month");
-
-  // const last_days_of_last_month =
-  // console.log(dayjs(current_date).date())
-
-  // const days_of_last_month = dayjs(current_date)
-  //   .subtract(1, "month")
-  //   .daysInMonth();
-
-  // const last_days_of_last_month = dayjs(current_date)
-  //   .subtract(1, "month")
-  //   .toDate();
-
-  // console.log(last_days_of_last_month);
-
-  // const days_of_next_month = 6 - dayjs(current_date).add(1, "month").day();
-
   return (
     <div className="relative mt-3 ml-3">
       <input type="text" />
-      <div className="absolute border border-black w-96">
+      <div className="absolute px-4 py-2 border border-black rounded-md w-96">
         <div>
           <div className="flex flex-row items-center justify-between w-full px-4 py-1">
-            <HiChevronDoubleLeft />
-            <div>{dayjs(current_date).year()}</div>
-            <HiChevronDoubleRight />
+            <div className="flex flex-row gap-2">
+              <button>
+                <HiChevronDoubleLeft />
+              </button>
+              <button>
+                <HiChevronLeft />
+              </button>
+            </div>
+            <div className="flex flex-row gap-2">
+              <span>{dayjs(current_date).year()}</span>
+              <span>{dayjs(current_date).month() + 1}</span>
+            </div>
+            <div className="flex flex-row gap-2">
+              <button>
+                <HiChevronRight />
+              </button>
+              <button>
+                <HiChevronDoubleRight />
+              </button>
+            </div>
           </div>
         </div>
-        <div>
-          <div className="flex flex-row items-center justify-between w-full px-4 py-1">
-            <HiChevronLeft />
-            <div>{dayjs(current_date).month() + 1}</div>
-            <HiChevronRight />
-          </div>
-        </div>
+
         <div className="grid grid-cols-7 auto-cols-auto auto-rows-[1.5rem]">
           <div className="text-center">sun.</div>
           <div className="text-center">mon.</div>
