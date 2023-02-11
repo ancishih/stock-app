@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
 const colors = require("tailwindcss/colors");
+const container = require("@tailwindcss/container-queries");
 module.exports = {
   mode: "jit",
   content: ["./components/**/*.tsx", "./pages/**/*.tsx"],
@@ -18,7 +19,7 @@ module.exports = {
         200: "#bed0f7",
         100: "#e0e8f9",
       },
-      grey: {
+      coolGrey: {
         900: "#1f2933",
         800: "#323f4b",
         700: "#3e4c59",
@@ -29,6 +30,18 @@ module.exports = {
         200: "#cbd2d9",
         100: "#e4e7eb",
         50: "#f5f7fa",
+      },
+      grey: {
+        900: "#222222",
+        800: "#3b3b3b",
+        700: "#515151",
+        600: "#626262",
+        500: "#7e7e7e",
+        400: "#9e9e9e",
+        300: "#b1b1b1",
+        200: "#cfcfcf",
+        100: "#e1e1e1",
+        50: "#f7f7f7",
       },
       lightBlue: {
         900: "#035388",
@@ -82,8 +95,112 @@ module.exports = {
     extend: {},
   },
   plugins: [
+    container,
     plugin(function ({ addUtilities, addComponents }) {
-      addComponents({}), addUtilities({});
+      addComponents({
+        ".news_card": {
+          display: "flex",
+          "flex-direction": "column",
+          overflow: "hidden",
+          // height: "13rem",
+          "border-top": "1px solid #7e7e7e",
+          "padding-top": "1rem",
+          "padding-bottom": "1rem",
+          gap: "1rem",
+        },
+        ".news_card img": {
+          "aspect-ratio": "16/9",
+          "flex-basis": "33.33%",
+          "max-width": "19rem",
+          width: "auto",
+          height: "auto",
+        },
+        ".news_card div": {
+          display: "flex",
+          "flex-direction": "column",
+          width: "66.66%",
+          "max-width": "42rem",
+          padding: "0 1rem",
+          height: "100%",
+        },
+        ".news_card:first-of-type": {
+          "padding-top": "4rem",
+          height: "20rem",
+          "border-top": "none",
+          position: "relative",
+        },
+        ".news_card:last-of-type": {
+          "border-bottom": "1px solid #7e7e7e",
+        },
+        // ".target_date": {
+        //   "font-size": "1.25rem",
+        //   color: "rgb(31,41,51)",
+        // },
+        // ".calendar_day": {
+        //   "text-align": "center",
+        //   color: "rgb(82 96 109 / 0.75)",
+        //   "font-size": "1.125rem",
+        // },
+        // ".next_calendar_date, .prev_calendar_date": {
+        //   color: "rgb(82 96 109)",
+        // },
+        // ".calendar_date, .next_calendar_date, .prev_calendar_date": {
+        //   display: "flex",
+        //   "flex-direction": "column",
+        //   "justify-content": "center",
+        //   "align-items": "center",
+        //   width: "2rem",
+        //   height: "2rem",
+        //   "user-select": "none",
+        // },
+        // ".calendar_date:hover, .calendar_date.active, .next_calendar_date:hover, .prev_calendar_date:hover":
+        //   {
+        //     "background-color": "rgba(123 147 219/0.75)",
+        //     color: "rgb(25 33 108)",
+        //     "border-radius": "50%",
+        //     transition: "color 0.1s, background-color 0.1s",
+        //   },
+        // ".calendar_date.active": {
+        //   "font-weight": "bold",
+        // },
+        // ".input": {
+        //   height: "1.75rem",
+        //   "font-size": "1.125rem",
+        //   padding: "0 0.25rem",
+        //   border: "1px solid rgb(31,41,51)",
+        //   "border-radius": "0.25rem",
+        // },
+        // ".input:focus": {
+        //   "background-color": "rgba(123,147,219,0.2)",
+        //   padding: "0 0.25rem",
+        // },
+        // ".modal_backdrop": {
+        //   background:
+        //     "radial-gradient(ellipse at top, rgba(82,96,109,1) 0%, rgba(31,41,51,1) 100%)",
+        // },
+        // ".th, .td": {
+        //   "flex-basis": "8.33%",
+        // },
+        // ".th:first-of-type, .td:first-of-type": {
+        //   "flex-basis": "25%",
+        //   "padding-right": "0.5rem",
+        //   "padding-left": "0.5rem",
+        // },
+        // ".th:nth-of-type(6),.td:nth-of-type(6)": {
+        //   "flex-basis": "16.66%",
+        // },
+        // ".tr": {
+        //   display: "flex",
+        //   "flex-direction": "row",
+        //   width: "100%",
+        //   "border-top": "1px solid black",
+        // },
+        // ".tr:first-of-type": {
+        //   "border-top": "none",
+        // },
+        // ".ripple": {},
+      }),
+        addUtilities({});
     }),
   ],
 };
